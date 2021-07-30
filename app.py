@@ -30,9 +30,15 @@ def index():
 def features():
     return render_template('newindex.html') 
 
-@app.route('/subscriptions') 
+@app.route('/subscriptions', methods= ["GET", "POST"])  
 def subscriptions():
-    return render_template('subscription.html')
+    if request.method== "GET":
+        return render_template('subscription.html')
+    else:
+        response = request.form["Peacock"] 
+        print(response) 
+        return render_template('subscription.html', response= response) 
+        
 
 @app.route('/budgeting')  
 def budgeting():
@@ -62,15 +68,17 @@ def signup():
         return 'The username already exists'
     return render_template('signups.html')  
 
- 
+@app.route('/login', methods = ['GET', 'POST']) 
 def login():
     
-    users = mongo.db.users
+    users = mongo.db.Signup 
     login_user = users.find_one({'Name': request.form['username']}) 
     if login_user:
-        if request.form['password'] == login_user['password']:
+        print(login_user) 
+        if request.form['password'] == login_user['Password']:
+                        
             session['username'] = request.form['username']
-            session['email'] = request.form['email'] 
+             
             return redirect(url_for('index')) 
     return 'Invalid username/password combination' 
 
