@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang= 'en'>
+</html>
+<head> 
+    <title>User Login System</title> 
+    <link rel="stylesheet" href="../static/css/signstyle.css"> 
+</head>
+<body>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    
+    <h2 class="active"> Sign In </h2>
+    <h2 class="inactive underlineHover">Sign Up </h2> 
+
+    
+    <form action="/signups" method = "POST"> 
+        
+      <input type="text" id="login" class="fadeIn second" name="username" placeholder="login">
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+      <input type="submit" class="fadeIn fourth" value="Log In"> 
+    </form>
+
+    
+    <div id="formFooter">
+      <a class="underlineHover" href="/signups">Forgot Password?</a> 
+    </div>
+
+  </div>
+</div> 
+</body> 
+</html> 
